@@ -1,0 +1,120 @@
+<html>
+	<head>
+    	<style type='text/css'>
+    	.embeddedServiceHelpButton .helpButton .uiButton {
+    		background-color: #005290;
+    		font-family: "Arial", sans-serif;
+    	}
+    	.embeddedServiceHelpButton .helpButton .uiButton:focus {
+    		outline: 1px solid #005290;
+    	}
+    </style>
+    var userId;
+    var clientName;
+    var email;
+    <script type='text/javascript' src='https://service.force.com/embeddedservice/5.0/esw.min.js'></script>
+    <script type='text/javascript'>
+    	var initESW = function(gslbBaseURL) {
+    		embedded_svc.settings.displayHelpButton = true; //Or false
+    		embedded_svc.settings.language = ''; //For example, enter 'en' or 'en-US'
+    
+    		//embedded_svc.settings.defaultMinimizedText = '...'; //(Defaults to Chat with an Expert)
+    		//embedded_svc.settings.disabledMinimizedText = '...'; //(Defaults to Agent Offline)
+    
+    		//embedded_svc.settings.loadingText = ''; //(Defaults to Loading)
+    		//embedded_svc.settings.storageDomain = 'yourdomain.com'; //(Sets the domain for your deployment so that visitors can navigate subdomains during a chat session)
+    
+    		// Settings for Chat
+    		//embedded_svc.settings.directToButtonRouting = function(prechatFormData) {
+    			// Dynamically changes the button ID based on what the visitor enters in the pre-chat form.
+    			// Returns a valid button ID.
+    		//};
+    		//embedded_svc.settings.prepopulatedPrechatFields = {}; //Sets the auto-population of pre-chat form fields
+    		//embedded_svc.settings.fallbackRouting = []; //An array of button IDs, user IDs, or userId_buttonId
+    		//embedded_svc.settings.offlineSupportMinimizedText = '...'; //(Defaults to Contact Us)
+        
+        /*
+		
+    			window.addEventListener("onEmbeddedMessagingReady", () => {
+    				console.log("Received the onEmbeddedMessagingReady event…");
+    
+    				// Send data to Salesforce
+    				embeddedservice_bootstrap.prechatAPI.setHiddenPrechatFields({"Order_Number" : "867-5309",
+    					"Customer_ID" : "11098324"});
+    
+    				// Remove any items from the previous list that you don't want to send
+    				embeddedservice_bootstrap.prechatAPI.removeHiddenPrechatFields(["Customer_ID"]);
+    			});	
+		
+		  */
+    		embedded_svc.settings.enabledFeatures = ['LiveAgent'];
+    		embedded_svc.settings.entryFeature = 'LiveAgent';
+    
+    		embedded_svc.init(
+    			'https://agility-platform-5689--qa.sandbox.my.salesforce.com',
+    			'https://agility-platform-5689--qa.sandbox.my.site.com/customers',
+    			gslbBaseURL,
+    			'00DDP0000062e5w',
+    			'Chat_Support_Team',
+    			{
+    				baseLiveAgentContentURL: 'https://c.la1-c1cs-ia7.salesforceliveagent.com/content',
+    				deploymentId: '572Hp000000pFkO',
+    				buttonId: '573Hp000000pFgX',
+    				baseLiveAgentURL: 'https://d.la1-c1cs-ia7.salesforceliveagent.com/chat',
+    				eswLiveAgentDevName: 'Chat_Support_Team',
+    				isOfflineSupportEnabled: false
+    			}
+    		);
+    	};
+    
+    	if (!window.embedded_svc) {
+    		var s = document.createElement('script');
+    		s.setAttribute('src', 'https://agility-platform-5689--qa.sandbox.my.salesforce.com/embeddedservice/5.0/esw.min.js');
+    		s.onload = function() {
+    			initESW(null);
+    		};
+    		document.body.appendChild(s);
+    	} else {
+    		initESW('https://service.force.com');
+    	}
+
+      function populate() { 
+        	/*
+        		Test html file
+        		file:///C:/Users/thomas.white/Documents/Salesforce/Pearl/webToCase.htm?name=thomas&email=thomas.white@keyrus.com&userid=12345
+        	*/
+        		//get the url variables		
+        		var varSection = window.location.search.substr(1);
+        		var varArray = varSection.split("&");
+        		for(var v=0; v<varArray.length; v++) { 
+        		var keyValueArray = varArray[v].split("="); //check the pair
+        			if(keyValueArray[0]=="name") { 
+        				varValue=keyValueArray[1]; 
+        				clientName = varValue; 
+        				//break; 
+        			}
+        			else if(keyValueArray[0]=="email") { 
+        				varValue=keyValueArray[1]; 
+        				email = varValue; 
+        				//break; 
+        			}
+        			else if(keyValueArray[0]=="userid") { 
+        				varValue=keyValueArray[1]; 
+        				userId = varValue; 
+        				//break; 
+        			}       			
+        		}
+      } 
+
+      
+    </script>
+
+</head>
+	<body style="width: 98%; height: 98%" onload="populate()">
+		<h1>Test Website</h1>
+	</body>
+	
+	
+	
+
+</html>
