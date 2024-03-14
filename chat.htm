@@ -78,40 +78,36 @@
     	} else {
     		initESW('https://service.force.com');
     	}
-
+	/*
       function populate() { 
-        	/*
-        		Test html file
-        		file:///C:/Users/thomas.white/Documents/Salesforce/Pearl/webToCase.htm?name=thomas&email=thomas.white@keyrus.com&userid=12345
-        	*/
-        		//get the url variables		
-        		var varSection = window.location.search.substr(1);
-        		var varArray = varSection.split("&");
-        		for(var v=0; v<varArray.length; v++) { 
-        		var keyValueArray = varArray[v].split("="); //check the pair
-        			if(keyValueArray[0]=="name") { 
-        				varValue=keyValueArray[1]; 
-        				clientName = varValue; 
-        				//break; 
-        			}
-        			else if(keyValueArray[0]=="email") { 
-        				varValue=keyValueArray[1]; 
-        				email = varValue; 
-        				//break; 
-        			}
-        			else if(keyValueArray[0]=="userid") { 
-        				varValue=keyValueArray[1]; 
-        				userId = varValue; 
-        				//break; 
-        			}       			
-        		}
-      } 
+		//get the url variables		
+		var varSection = window.location.search.substr(1);
+		var varArray = varSection.split("&");
+		for(var v=0; v<varArray.length; v++) { 
+		var keyValueArray = varArray[v].split("="); //check the pair
+			if(keyValueArray[0]=="name") { 
+				varValue=keyValueArray[1]; 
+				clientName = varValue; 
+				//break; 
+			}
+			else if(keyValueArray[0]=="email") { 
+				varValue=keyValueArray[1]; 
+				email = varValue; 
+				//break; 
+			}
+			else if(keyValueArray[0]=="userid") { 
+				varValue=keyValueArray[1]; 
+				userId = varValue; 
+				//break; 
+			}       			
+		}
+      } */
 
       
     </script>
 
 </head>
-	<body style="width: 98%; height: 98%" onload="populate()">
+	<body style="width: 98%; height: 98%">
 		<h1>Test Website</h1>
 	</body>
 	
